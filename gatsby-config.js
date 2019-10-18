@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `George's Blog`,
-    description: `A blog website for my thoughts and ideas`,
+    title: `A Student's Blog`,
+    description: `A day in the life of a student at a British University`,
     author: `@neon-flights`,
   },
   plugins: [
@@ -27,13 +27,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `A Student's Blog`,
+        short_name: `Student's Blog`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#fff5e7`,
+        theme_color: `#fff5e7`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

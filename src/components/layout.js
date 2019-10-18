@@ -8,7 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import "typeface-montserrat"
 import Header from "./header"
 import "./layout.css"
 
@@ -35,9 +35,16 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()},
-          <a href="https://georgefairbairn.com">George Fairbairn</a>
+        <footer style={{
+            display: `flex`,
+            justifyContent: `center`
+          }}>
+          <a style={{
+            textDecoration: `none`,
+            color: `#334355`,
+            fontFamily: `Montserrat`,
+            fontWeight: 400
+          }} href="https://github.com/neon-flights" target="_blank" rel="noopener noreferrer">neon-flights © {new Date().getFullYear()}</a>
         </footer>
       </div>
     </>

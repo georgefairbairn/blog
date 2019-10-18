@@ -1,20 +1,15 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
-import styled from "styled-components"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
-const BlogLink = styled(Link)`
-  text-decoration: none;
-  &:hover {
-    color: blue;
-  }
-`
-
-const BlogTitle = styled.h3`
-  margin-bottom: 20px;
-`
+import {
+  BlogLink,
+  BlogTitle,
+  PostCount,
+  BlogExcerpt,
+  PostDate,
+  BlogSnippetContainer
+} from "../styles/homepage/homepage.styles"
 
 export default ({ data }) => {
   console.log(data)
@@ -22,17 +17,15 @@ export default ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <div>
-        <h1>Yihua's Thoughts</h1>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        <PostCount>{data.allMarkdownRemark.totalCount} POSTS</PostCount>
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
+          <BlogSnippetContainer key={node.id}>
             <BlogLink to={node.fields.slug}>
-              <BlogTitle>
-                {node.frontmatter.title} - {node.frontmatter.date}
-              </BlogTitle>
+              <BlogTitle>{node.frontmatter.title.toUpperCase()}</BlogTitle>
             </BlogLink>
-            <p>{node.excerpt}</p>
-          </div>
+            <PostDate>{node.frontmatter.date}</PostDate>
+            <BlogExcerpt>{node.excerpt}</BlogExcerpt>
+          </BlogSnippetContainer>
         ))}
       </div>
     </Layout>
@@ -46,9 +39,8 @@ export const query = graphql`
         node {
           id
           frontmatter {
-            description
             title
-            date
+            date(formatString: "MMMM Do, YYYY")
           }
           fields {
             slug
